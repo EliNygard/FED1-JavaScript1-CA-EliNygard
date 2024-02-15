@@ -68,6 +68,7 @@
                     <div class="header-right">
                         <div tabindex="0" aria-label="Search"><i class="icons-header fa-solid fa-magnifying-glass"></i></div>
                         <div tabindex="0" aria-label="User"><i class="icons-header fa-regular fa-user"></i></div>
+                        <a href="./html/checkout.html" tabindex="0" aria-label="Cart"><i class="icons-header fa-solid fa-basket-shopping"></i></a>                        
                     </div> 
                 </div>
             </section>
@@ -82,13 +83,19 @@
                         <h2 class="serif serif-tight">Again and again</h2>
                     </div>  
                 </div>
-                <div class="position-cta hide-on-mobile">
+                <!-- <div class="position-cta hide-on-mobile">
                     <h2 role="button" class="cta-home">Create account</h2>
-                </div>
+                </div> -->
             </section>
             <div class="button-box hide-on-desktop">
                 <h2 role="button" class="cta-home">Create account</h2>
             </div>
+            <button>All films</button>
+            <button>Action</button>
+            <button>Comedy</button>
+            <button>Drama</button>
+            <button>Horror</button>
+            <button>Kids</button>
             <select name="genre" id="js-select-genre">
                 <option value="All films">All films</option>
                 <option value="Action">Action</option>
@@ -97,7 +104,11 @@
                 <option value="Comedy">Comedy</option>
                 <option value="Drama">Drama</option>
             </select>
-            <div id="film-container"></div>
+            <form>
+                <input type="text" id="filterinput" placeholder="Search for film title">
+            </form>
+            <section class="film-container" id="film-container"></section>
+            <!--
             <div class="film-selection-container">
                 <h3 class="film-selection__heading">My films</h3>
                 <div class="image-scroller">
@@ -261,7 +272,8 @@
                         </a>
                     </div>
                 </div>
-            </div> 
+            </div>
+            --> 
         </main>
         <footer class="hide-on-mobile">
             <nav class="footer-nav">

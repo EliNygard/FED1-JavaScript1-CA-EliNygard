@@ -1,10 +1,10 @@
 import { API_URL } from "./shared/constants.js";
 
 
-function displayFilms(films) {
+function displayFilms(film) {
     const filmContainer = document.getElementById('film-container');
 
-    films.forEach(film => {
+    film.forEach(film => {
         const filmElement = createFilmElement(film);
         filmContainer.appendChild(filmElement);
     });
@@ -25,6 +25,7 @@ function createFilmElement(film) {
 
     return filmDiv;
 }
+
 
 async function doFetch(url) {
     try {

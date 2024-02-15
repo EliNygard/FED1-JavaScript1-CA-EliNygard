@@ -71,3 +71,21 @@
 .director {
     font-size: .9rem;  
 }
+
+
+
+/*for js ca film list on home*/
+
+.film-container {
+    width: 350px;
+    display: grid;
+    
+}
+
+.film-item {
+    padding: 1rem;
+}
+
+.film-container img {
+    width: 100%;
+}

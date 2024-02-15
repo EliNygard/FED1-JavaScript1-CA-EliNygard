@@ -1,66 +1,99 @@
 import { API_URL } from "./shared/constants.js";
 
-const selectGenre = document.getElementById('js-select-genre');
+import { displayFilms } from "./display-films.mjs";
 
-selectGenre.addEventListener('change', () => {
-    const selectedGenre = selectGenre.value;
-    const filteredFilms = filmsData.filter(film => film.genre === selectedGenre);
 
-    displayFilms(filteredFilms);
-});
 
-function displayFilms(films) {
-    const filmsData = films.data;
-    const filmContainer = document.getElementById('film-container');
 
-    filmsData.forEach(film => {
-        const filmElement = createFilmElement(film);
-        filmContainer.appendChild(filmElement);
-    });
-}
 
-function createFilmElement(film) {
-    const filmDiv = document.createElement('div');
-    // filmDiv.classList.add('');
 
-    const imageElement = document.createElement('img');
-    imageElement.src = film.image.url;
-    imageElement.alt = film.image.alt;
 
-    const titleElement = document.createElement('h2');
-    titleElement.textContent = film.title;
-    titleElement.classList.add('film-selection__heading');
 
-    const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = film.description;
 
-    const filmPageLink = document.createElement('a');
-    filmPageLink.innerHTML = "View Film";
-    filmPageLink.href = `./html/`   //`film.html?id=${film.id}`
-    filmPageLink.classList.add('cta');
 
-    filmDiv.appendChild(imageElement);
-    filmDiv.appendChild(titleElement);
-    filmDiv.appendChild(descriptionElement);
-    filmDiv.appendChild(filmPageLink);
 
-    return filmDiv;
-}
 
-async function doFetch(url) {
+
+
+
+
+
+  
+
+async function fetchFilms(url) {
     try {
         const response = await fetch(url);
         const json = await response.json();
-        return json;
+        return json.data;
     } catch (error) {
         console.log('Error', error);
     }
 }
 
 async function main() {
-    const films = await doFetch(API_URL);
-    displayFilms(films);
+    const filmItems = await fetchFilms(API_URL);
+    displayFilms(filmItems);
 }
 
 main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const selectGenre = document.getElementById('action');
+
+// selectGenre.addEventListener('change', () => {
+//     const selectedGenre = selectGenre.value;
+//     const filteredFilms = filmsData.filter(film => film.genre === selectedGenre);
+
+//     displayFilms(filteredFilms);
+// });
+
+// let filterInput = document.getElementById("filterinput");
+
+// filterInput.addEventListener('keyup', filterFilms);
+
+// export function filterFilms(){
+//     let filterValue = filterInput.value.toUpperCase();
+//     let item = grid.querySelectorAll('.film-item');
+
+//     for (let i = 0; i < item.length; i++){
+//         let span = item[i].querySelector('.film-title');
+
+//         if(span.innerHTML.toUpperCase().indexOf(filterValue) > -1){
+//             item[i].style.display = "initial";
+//         }else{
+//             item[i].style.display = "none";
+//         }
+//     }
+// }
+
+
+// let selectGenre = document.querySelectorAll('option');
+
+// selectGenre.addEventListener('click', filterFilmsByGenre);
+
+// export function filterFilmsByGenre(films) {
+//     const filmsData = films.data;
+    
+//     filmsData.forEach(film => {
+//         filmsData.find()
+//     });
+        
+// }
+
+
+
 
