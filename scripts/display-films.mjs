@@ -8,7 +8,7 @@ export function displayFilms(filmItems) {
     });
 }
 
-export function createFilmElement(film) {
+function createFilmElement(film) {
     const filmDiv = document.createElement('div');
     filmDiv.classList.add('film-item');
 
@@ -25,8 +25,11 @@ export function createFilmElement(film) {
 
     const filmPageLink = document.createElement('a');
     filmPageLink.innerHTML = "View film info";
-    filmPageLink.href = `./html/`   //`film.html?id=${film.id}`
+    filmPageLink.href = `../html/filmpage.html`   
     filmPageLink.classList.add('cta');
+    filmPageLink.addEventListener('click', () => {
+        localStorage.setItem('film', JSON.stringify(film));
+    }); 
 
     const buyFilmButton = document.createElement('button');
     buyFilmButton.innerHTML = "Add film to cart";
@@ -53,3 +56,40 @@ document.addEventListener('click', (event) => {
 //             console.log('added film to cart');
 //         });
 //     });
+
+
+// CHECKOUT
+
+export let cart = JSON.parse(localStorage.getItem('cart'));
+
+if (!cart) {
+    cart = [{
+        
+    }];
+}
+
+function saveToStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+export function addToCart(productId) {
+    let matchingItem;
+
+    cart.forEach((cartItem) => {
+        if (productId === cartItem.productId) {
+            matchingItem = cartItem;
+        }
+    });
+
+    if (matchingItem) {
+        matchingItem.quantity += 1;
+    } 
+    else {
+        cart.push({
+            productId: productId,
+            quantity: 1
+        });
+    }
+
+    saveToStorage();
+}

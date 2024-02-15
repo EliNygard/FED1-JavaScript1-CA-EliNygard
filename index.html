@@ -90,12 +90,14 @@
             <div class="button-box hide-on-desktop">
                 <h2 role="button" class="cta-home">Create account</h2>
             </div>
-            <button>All films</button>
-            <button>Action</button>
-            <button>Comedy</button>
-            <button>Drama</button>
-            <button>Horror</button>
-            <button>Kids</button>
+            <div class="test">
+                <button>All films</button>
+                <button>Action</button>
+                <button>Comedy</button>
+                <button>Drama</button>
+                <button>Horror</button>
+                <button>Kids</button>
+            </div>
             <select name="genre" id="js-select-genre">
                 <option value="All films">All films</option>
                 <option value="Action">Action</option>
@@ -107,6 +109,17 @@
             <form>
                 <input type="text" id="filterinput" placeholder="Search for film title">
             </form>
+            <details class="sortFilmsByGenre">
+                <summary>Genre</summary>
+                <ul>
+                    <li>All films</li>
+                    <li>Action</li>
+                    <li>Horror</li>
+                    <li>Kids</li>
+                    <li>Comedy</li>
+                    <li>Drama</li>
+                </ul>
+            </details>
             <section class="film-container" id="film-container"></section>
             <!--
             <div class="film-selection-container">

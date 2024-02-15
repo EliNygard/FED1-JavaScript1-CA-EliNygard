@@ -1,24 +1,10 @@
 import { API_URL } from "./shared/constants.js";
 
 import { displayFilms } from "./display-films.mjs";
+import { generateFilmPageItem } from "./filmpage.mjs";
+import { filterFunctions } from "./filter-by-genre.mjs";
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 async function fetchFilms(url) {
     try {
@@ -33,6 +19,10 @@ async function fetchFilms(url) {
 async function main() {
     const filmItems = await fetchFilms(API_URL);
     displayFilms(filmItems);
+    filterFunctions(filmItems);
+    
+    localStorage.setItem("filmList", JSON.stringify(filmItems));
+
 }
 
 main();
