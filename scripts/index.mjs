@@ -89,7 +89,7 @@ function generateCartItem (filmItem) {
     
     const price = document.createElement("p");
     price.classList.add("price");
-    price.textContent = filmItem.price;
+    price.textContent = `Price: ${filmItem.price}`;
 
     const priceDiscount = document.createElement("p");
     priceDiscount.classList.add("price-discount");
