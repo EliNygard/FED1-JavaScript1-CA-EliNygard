@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto&family=Source+Serif+4:opsz,wght@8..60,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/index.css">
         <script src="https://kit.fontawesome.com/2c5c2a6dff.js" crossorigin="anonymous"></script>
-        <script type="module" src="../scripts/checkout.mjs"></script>
+        <script type="module" src="../scripts/index.mjs"></script>
     </head>
     <body>
         <header>
@@ -75,7 +75,34 @@
         <main>
             <h1>Checkout</h1>
 
-            <div class="content_checkout">
+            <div class="cart-items">
+                <!-- <div class="cart-row">
+                    <div class="cart-item">
+                        <div class="cart-item-image">Bilde fra filmen</div>
+                        <div class="cart-price">100.99 kr</div>
+                        <div class="cart-quantity">
+                            <input class="cart-quantity-input" type="number" value="1">
+                        </div>
+                        <button class="cta remove-btn" type="button">Remove</button>
+                    </div>
+                </div>
+                <div class="cart-row">
+                    <div class="cart-item">
+                        <div class="cart-item-image">Bilde fra filmen</div>
+                        <div class="cart-price">150.99 kr</div>
+                        <div class="cart-quantity">
+                            <input class="cart-quantity-input" type="number" value="1">
+                        </div>
+                        <button class="cta remove-btn" type="button">Remove</button>
+                    </div>
+                </div> -->
+            </div>
+            <div class="cart-tot">
+                <span class="cart-total-title">Total</span>
+                <span class="cart-total-price"></span>
+            </div>
+            <button class="cta purchase-btn" type="button">Buy now</button>
+            
 
 
 
@@ -116,10 +143,10 @@
                     <p class="center-font">Read the terms and conditions</p>
                 </div>
                 <div class="center-item">
-                    <a href="./checkoutsuccess.html" class="cta">Buy now for 109 kr</a>
+                    <a href="./checkoutsuccess.html" class="cta">Buy now</a>
                 </div>
                 <div class="center-item">
-                    <a href="./filmpage.html" class="cta">Back</a>
+                    <a href="../index.html" class="cta">Back</a>
                 </div>
             </div>
         </main>

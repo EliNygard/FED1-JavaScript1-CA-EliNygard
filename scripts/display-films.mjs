@@ -1,4 +1,5 @@
 export function displayFilms(filmItems) {
+
     const filmsData = filmItems;
     const filmContainer = document.getElementById('film-container');
 
@@ -6,13 +7,14 @@ export function displayFilms(filmItems) {
         const filmElement = createFilmElement(film);
         filmContainer.appendChild(filmElement);
     });
-}
+};
 
 function createFilmElement(film) {
     const filmDiv = document.createElement('div');
     filmDiv.classList.add('film-item');
 
     const imageElement = document.createElement('img');
+    imageElement.classList.add("film-image")
     imageElement.src = film.image.url;
     imageElement.alt = film.image.alt;
 
@@ -34,6 +36,10 @@ function createFilmElement(film) {
     const buyFilmButton = document.createElement('button');
     buyFilmButton.innerHTML = "Add film to cart";
     buyFilmButton.classList.add('js-add-to-cart', 'cta');
+    buyFilmButton.addEventListener('click', () => {
+        localStorage.setItem('film', JSON.stringify(film));
+        console.log("added to cart");
+    })
 
     filmDiv.appendChild(imageElement);
     filmDiv.appendChild(titleElement);
@@ -42,13 +48,13 @@ function createFilmElement(film) {
     filmDiv.appendChild(buyFilmButton);
 
     return filmDiv;
-}
+};
 
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('js-add-to-cart')) {
-        console.log('added film to cart');
-    }
-});
+// document.addEventListener('click', (event) => {
+//     if (event.target.classList.contains('js-add-to-cart')) {
+//         console.log('added film to cart');
+//     }
+// });
 
 // document.querySelectorAll('.js-add-to-cart')
 //     .forEach((button) => {
@@ -60,36 +66,36 @@ document.addEventListener('click', (event) => {
 
 // CHECKOUT
 
-export let cart = JSON.parse(localStorage.getItem('cart'));
+// export let cart = JSON.parse(localStorage.getItem('cart'));
 
-if (!cart) {
-    cart = [{
+// if (!cart) {
+//     cart = [{
         
-    }];
-}
+//     }];
+// }
 
-function saveToStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
+// function saveToStorage() {
+//     localStorage.setItem('cart', JSON.stringify(cart));
+// }
 
-export function addToCart(productId) {
-    let matchingItem;
+// export function addToCart(productId) {
+//     let matchingItem;
 
-    cart.forEach((cartItem) => {
-        if (productId === cartItem.productId) {
-            matchingItem = cartItem;
-        }
-    });
+//     cart.forEach((cartItem) => {
+//         if (productId === cartItem.productId) {
+//             matchingItem = cartItem;
+//         }
+//     });
 
-    if (matchingItem) {
-        matchingItem.quantity += 1;
-    } 
-    else {
-        cart.push({
-            productId: productId,
-            quantity: 1
-        });
-    }
+//     if (matchingItem) {
+//         matchingItem.quantity += 1;
+//     } 
+//     else {
+//         cart.push({
+//             productId: productId,
+//             quantity: 1
+//         });
+//     }
 
-    saveToStorage();
-}
+//     saveToStorage();
+// }

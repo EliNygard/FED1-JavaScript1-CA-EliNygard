@@ -3,19 +3,17 @@ import { displayFilms } from "./display-films.mjs";
 
 let filmList = JSON.parse(localStorage.getItem("filmList"));
 
-export const filterFunctions = (filmList) => {
+export const filterFunctions = (filmList) => {             //dette er ikke en funksjon, derfor kan den ikke calles i main, kun en variabel. Hvordan skrive den som en funksjon
     addEventListenerOnFilmGenre(filmList);
-    console.log("filter function");
 }
 
 const addEventListenerOnFilmGenre = (filmList) => {
-    console.log("event listener");
     document.querySelectorAll(".sortFilmsByGenre ul li").forEach((genre) => {
         genre.addEventListener("click", () => {
         filterFilmByGenre(genre.textContent, filmList);
         });
     }); 
-}
+};
 
 const filterFilmByGenre = async (genre, filmList) => {             // sjekk hvorfor async
     if (genre === "All films") {
@@ -26,6 +24,4 @@ const filterFilmByGenre = async (genre, filmList) => {             // sjekk hvor
         console.log(genre);
         console.log(filteredFilmList);
     }  
-}
-
-
+};

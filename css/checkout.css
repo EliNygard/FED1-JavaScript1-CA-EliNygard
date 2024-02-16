@@ -76,4 +76,15 @@
 .form-short > input {
     width: 79%;
 }
+
+.cart-items {
+    padding: 3rem;
+}
     
+.cart-item-image {
+    height: 200px;
+}
+
+.price-discount {
+    color: green;
+}
