@@ -1,33 +1,7 @@
-import { API_FILM_URL } from "./shared/constants.js";
-
-import { displayFilms } from "./display-films.mjs";
-// import { generateFilmPageItem } from "./filmpage.mjs";
-import { filterFunctions } from "./filter-by-genre.mjs";
 
 
 
-async function fetchFilms(url) {
-    try {
-        const response = await fetch(url);
-        const json = await response.json();
-        return json.data;
-    } catch (error) {
-        console.error("Could not fetch data from api", error);
-    }
-}
 
-async function main() {
-    const filmItems = await fetchFilms(API_FILM_URL);
-
-    localStorage.setItem("filmList", JSON.stringify(filmItems)); 
-
-    displayFilms(filmItems);
-    // generateFilmPageItem(filmItems);
-    filterFunctions(filmItems);
-
-}
-
-main();
 
 
 
@@ -58,13 +32,6 @@ for (var i = 0; i < quantityInputs.length; i++) {
     input.addEventListener('change', quantityChanged)
 }
 
-
-function removeCartItem(event) {
-    const removeButtonClicked = event.target;
-        removeButtonClicked.parentElement.parentElement.remove()
-        updateCartTotal();
-}
-
 function quantityChanged(event) {
     const input = event.target;
     if (isNaN(input.value) || input.value <= 0) {
@@ -73,58 +40,6 @@ function quantityChanged(event) {
     updateCartTotal();
 }
 
-
-const filmsArray = JSON.parse(localStorage.getItem("cart"));
-
-function generateCartItem (filmItem) {
-
-    const cartItemsContainer = document.querySelector(".cart-items")
-
-    const cartRow = document.createElement("div");
-    cartRow.classList.add("cart-row");
-
-    const cartItem = document.createElement("div");
-    cartItem.classList.add("cart-item");
-
-    const imageElement = document.createElement("img");
-    imageElement.classList.add("cart-item-image");
-    imageElement.src = filmItem.image.url;
-    imageElement.alt = filmItem.image.alt;
-
-    const priceElement = document.createElement("div");
-    priceElement.classList.add("price-element");
-    
-    const price = document.createElement("p");
-    price.classList.add("cart-price");
-    price.textContent = `Price: ${filmItem.price}`;
-
-    const priceDiscount = document.createElement("p");
-    priceDiscount.classList.add("price-discount");
-    priceDiscount.textContent = `Discounted price: ${filmItem.discountedPrice}`;
-
-    const removeButton = document.createElement("button");
-    removeButton.classList.add("remove-btn", "cta");
-    removeButton.textContent = "Remove";
-    removeButton.addEventListener('click', removeCartItem);
-    
-    cartItemsContainer.appendChild(cartRow);
-    cartRow.appendChild(cartItem);
-    cartItem.appendChild(imageElement);
-    cartItem.appendChild(priceElement);
-    priceElement.append(price, priceDiscount);
-    cartItem.appendChild(removeButton);
-    
-    return cartRow;
-};
-
-
-function getFilms() {
-    filmsArray.forEach(film => {
-        generateCartItem(film)
-    })  
-}
-
-getFilms(filmsArray);
 
 
 // function addToCartClicked(event) {

@@ -1,4 +1,4 @@
-import { displayFilms } from "./display-films.mjs";
+// import { displayFilms } from "./display-films.mjs";
 
 
 let filmList = JSON.parse(localStorage.getItem("filmList"));

@@ -1,4 +1,7 @@
-export function displayFilms(filmItems) {
+import { allFilms } from "./fetchData.mjs";
+import { handleAddToCart } from "./addtocart.mjs";
+
+function displayFilms(filmItems) {
 
     const filmsData = filmItems;
     const filmContainer = document.getElementById('film-container');
@@ -13,6 +16,7 @@ function createFilmElement(film) {
     
     const filmDiv = document.createElement('div');
     filmDiv.classList.add('film-item');
+    filmDiv.setAttribute('id', film.id)
 
     const imageElement = document.createElement('img');
     imageElement.classList.add("film-image")
@@ -24,23 +28,18 @@ function createFilmElement(film) {
     titleElement.classList.add('film-selection__heading', 'film-title');
 
     const filmPageLink = document.createElement('a');
-    filmPageLink.innerHTML = "View film info";
+    filmPageLink.textContent = "View film info";
     filmPageLink.href = `../html/filmpage.html`;   
     filmPageLink.classList.add('cta');
-    filmPageLink.addEventListener('click', () => {
-        localStorage.setItem('film', JSON.stringify(film));
-    }); 
+    // filmPageLink.addEventListener('click', () => {
+    //     localStorage.setItem('film', JSON.stringify(film));
+    // }); 
 
     const addToCart = document.createElement('button');
     addToCart.innerHTML = "Add film to cart";
     addToCart.href = `../html/checkout.html`; 
     addToCart.classList.add('js-add-to-cart', 'cta');
-    // addToCart.addEventListener('click', () => {
-    //     let cart = JSON.parse(localStorage.getItem("cart"));
-    //     cart.push(film);
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    //     console.log("added to cart");
-    // });
+    addToCart.addEventListener('click', handleAddToCart)
 
     filmDiv.appendChild(imageElement);
     filmDiv.appendChild(titleElement);
@@ -50,3 +49,4 @@ function createFilmElement(film) {
     return filmDiv;
 };
 
+displayFilms(allFilms)
