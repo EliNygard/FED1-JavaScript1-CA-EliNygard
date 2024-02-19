@@ -30,7 +30,21 @@ async function main() {
 main();
 
 
+
+
+
+
+
+
 // CART - move to separate file
+
+// add item to cart
+// generate items
+// update cart quantity
+// buy films button = message to user
+
+
+
 
 const removeCartItemButtons = document.getElementsByClassName("remove-btn");
 for (var i = 0; i < removeCartItemButtons.length; i++) {
@@ -44,13 +58,6 @@ for (var i = 0; i < quantityInputs.length; i++) {
     input.addEventListener('change', quantityChanged)
 }
 
-// const addToCartButtons = document.getElementsByClassName("js-add-to-cart");
-// console.log(addToCartButtons);
-// for (var i = 0; i < addToCartButtons.length; i++) {
-//     const addToCartButton = addToCartButtons[i];
-//     addToCartButton.addEventListener('click', addToCartClicked);
-//     console.log("added");
-// }
 
 function removeCartItem(event) {
     const removeButtonClicked = event.target;
@@ -67,11 +74,11 @@ function quantityChanged(event) {
 }
 
 
-const filmItem = JSON.parse(localStorage.getItem("film"));
+const filmsArray = JSON.parse(localStorage.getItem("cart"));
 
 function generateCartItem (filmItem) {
 
-    let cartItemsContainer = document.querySelector(".cart-items")
+    const cartItemsContainer = document.querySelector(".cart-items")
 
     const cartRow = document.createElement("div");
     cartRow.classList.add("cart-row");
@@ -88,23 +95,36 @@ function generateCartItem (filmItem) {
     priceElement.classList.add("price-element");
     
     const price = document.createElement("p");
-    price.classList.add("price");
+    price.classList.add("cart-price");
     price.textContent = `Price: ${filmItem.price}`;
 
     const priceDiscount = document.createElement("p");
     priceDiscount.classList.add("price-discount");
     priceDiscount.textContent = `Discounted price: ${filmItem.discountedPrice}`;
+
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("remove-btn", "cta");
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener('click', removeCartItem);
     
     cartItemsContainer.appendChild(cartRow);
     cartRow.appendChild(cartItem);
     cartItem.appendChild(imageElement);
     cartItem.appendChild(priceElement);
     priceElement.append(price, priceDiscount);
+    cartItem.appendChild(removeButton);
     
     return cartRow;
+};
+
+
+function getFilms() {
+    filmsArray.forEach(film => {
+        generateCartItem(film)
+    })  
 }
 
-generateCartItem(filmItem);
+getFilms(filmsArray);
 
 
 // function addToCartClicked(event) {
@@ -140,6 +160,17 @@ function updateCartTotal() {
 }
 
 
+const purchaseButton = document.getElementsByClassName("btn-purchase");
+purchaseButton.addEventListener('click', purchaseClicked);
+
+function purchaseClicked() {
+    alert("Great film selection! Enjoy your film experience!");
+    const cartItems = document.getElementsByClassName("cart-items");
+    while (cartItems.hasChildNodes()) {
+        cartItems.removeChild(cartItems.firstChild)
+    }
+    updateCartTotal();
+};
 
 
 
