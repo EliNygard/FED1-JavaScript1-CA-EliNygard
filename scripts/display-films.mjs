@@ -1,7 +1,7 @@
-import { allFilms } from "./fetchData.mjs";
+
 import { handleAddToCart } from "./addtocart.mjs";
 
-function displayFilms(filmItems) {
+export function displayFilms(filmItems) {
 
     const filmsData = filmItems;
     const filmContainer = document.getElementById('film-container');
@@ -48,5 +48,3 @@ function createFilmElement(film) {
 
     return filmDiv;
 };
-
-displayFilms(allFilms)

@@ -1,4 +1,10 @@
+import { allFilms } from "./fetchData.mjs";
+import { displayFilms } from "./display-films.mjs";
+import { filterFunctions } from "./filter-by-genre.mjs";
 
+
+displayFilms(allFilms);
+filterFunctions();
 
 
 
@@ -20,25 +26,25 @@
 
 
 
-const removeCartItemButtons = document.getElementsByClassName("remove-btn");
-for (var i = 0; i < removeCartItemButtons.length; i++) {
-    const removeButton = removeCartItemButtons[i];
-    removeButton.addEventListener('click', (removeCartItem))
-}
+// const removeCartItemButtons = document.getElementsByClassName("remove-btn");
+// for (var i = 0; i < removeCartItemButtons.length; i++) {
+//     const removeButton = removeCartItemButtons[i];
+//     removeButton.addEventListener('click', (removeCartItem))
+// }
 
-const quantityInputs = document.getElementsByClassName("cart-quantity-input");
-for (var i = 0; i < quantityInputs.length; i++) {
-    const input = quantityInputs[i]
-    input.addEventListener('change', quantityChanged)
-}
+// const quantityInputs = document.getElementsByClassName("cart-quantity-input");
+// for (var i = 0; i < quantityInputs.length; i++) {
+//     const input = quantityInputs[i]
+//     input.addEventListener('change', quantityChanged)
+// }
 
-function quantityChanged(event) {
-    const input = event.target;
-    if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1;
-    }
-    updateCartTotal();
-}
+// function quantityChanged(event) {
+//     const input = event.target;
+//     if (isNaN(input.value) || input.value <= 0) {
+//         input.value = 1;
+//     }
+//     updateCartTotal();
+// }
 
 
 
@@ -58,34 +64,34 @@ function quantityChanged(event) {
     // console.log(title, imageSrc);
 // }
 
-function updateCartTotal() {
-    const cartItemContainer = document.getElementsByClassName("cart-items")[0];
-    const cartRows = cartItemContainer.getElementsByClassName("cart-row");
-    let total = 0;
-    for (var i = 0; i < cartRows.length; i++) {
-        const cartRow = cartRows[i];
-        const priceElement = cartRow.getElementsByClassName("cart-price")[0]
-        const quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
-        const price = parseFloat(priceElement.innerText.replace("kr", ""));
-        const quantity = quantityElement.value;
-        total = total + (price * quantity);
-    }
-    total = Math.round(total * 100) / 100;          // to desimaler etter komma
-    document.getElementsByClassName("cart-total-price")[0].innerText = total + ' kr';
-}
+// function updateCartTotal() {
+//     const cartItemContainer = document.getElementsByClassName("cart-items")[0];
+//     const cartRows = cartItemContainer.getElementsByClassName("cart-row");
+//     let total = 0;
+//     for (var i = 0; i < cartRows.length; i++) {
+//         const cartRow = cartRows[i];
+//         const priceElement = cartRow.getElementsByClassName("cart-price")[0]
+//         const quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
+//         const price = parseFloat(priceElement.innerText.replace("kr", ""));
+//         const quantity = quantityElement.value;
+//         total = total + (price * quantity);
+//     }
+//     total = Math.round(total * 100) / 100;          // to desimaler etter komma
+//     document.getElementsByClassName("cart-total-price")[0].innerText = total + ' kr';
+// }
 
 
-const purchaseButton = document.getElementsByClassName("btn-purchase");
-purchaseButton.addEventListener('click', purchaseClicked);
+// const purchaseButton = document.getElementsByClassName("btn-purchase");
+// purchaseButton.addEventListener('click', purchaseClicked);
 
-function purchaseClicked() {
-    alert("Great film selection! Enjoy your film experience!");
-    const cartItems = document.getElementsByClassName("cart-items");
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
-    }
-    updateCartTotal();
-};
+// function purchaseClicked() {
+//     alert("Great film selection! Enjoy your film experience!");
+//     const cartItems = document.getElementsByClassName("cart-items");
+//     while (cartItems.hasChildNodes()) {
+//         cartItems.removeChild(cartItems.firstChild)
+//     }
+//     updateCartTotal();
+// };
 
 
 

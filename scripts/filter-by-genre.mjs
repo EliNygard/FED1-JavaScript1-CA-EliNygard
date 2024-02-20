@@ -1,33 +1,26 @@
-// import { displayFilms } from "./display-films.mjs";
 
+import { displayFilms } from "./display-films.mjs";
 
-let filmList = JSON.parse(localStorage.getItem("filmList"));
-
-
-export const filterFunctions = (filmList) => {             //dette er ikke en funksjon, derfor kan den ikke calles i main, kun en variabel. Hvordan skrive den som en funksjon?
+export const filterFunctions = () => {
+    let filmList = JSON.parse(localStorage.getItem("filmList"));
     addEventListenerOnFilmGenre(filmList);
+};
+
+function addEventListenerOnFilmGenre(filmList) {
+    document.querySelectorAll(".sortFilmsByGenre ul li").forEach((genre) => {
+        genre.addEventListener("click", () => filterFilmByGenre(genre.textContent, filmList));
+    });
 }
 
-const addEventListenerOnFilmGenre = (filmList) => {
-    document.querySelectorAll(".sortFilmsByGenre ul li").forEach((genre) => {
-        genre.addEventListener("click", filterFilmByGenre(genre.textContent, filmList));
-    }); 
-};
-
-const filterFilmByGenre = (genre, filmList) => {             // loop through
+function filterFilmByGenre(genre, filmList) {
+    const filmContainer = document.getElementById('film-container');
     if (genre === "All films") {
+        filmContainer.innerHTML = '';
         displayFilms(filmList);
     } else {
+        filmContainer.innerHTML = '';
         let filteredFilmList = filmList.filter((film) => film.genre === genre);
-        filteredFilmList.forEach(film => {
-            film.style.display = "block";
-        }) 
-        
-        
-        // displayFilms(filteredFilmList);
-
-        console.log(genre);
-        console.log(filteredFilmList);
-    }  
-};
+        displayFilms(filteredFilmList);
+    }
+}
 
