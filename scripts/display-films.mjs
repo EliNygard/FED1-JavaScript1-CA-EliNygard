@@ -9,6 +9,14 @@ export function displayFilms(filmItems) {
     });
 };
 
+// steps for add to cart; 
+// 1. check if film is added to cart:
+//    if added, increment "quantity" by 1
+// else, add the game
+function addToCart(film) {
+    console.log("add to cart", film);
+}
+
 function createFilmElement(film) {
     
     const filmDiv = document.createElement('div');
@@ -31,10 +39,13 @@ function createFilmElement(film) {
         localStorage.setItem('film', JSON.stringify(film));
     }); 
 
-    const addToCart = document.createElement('button');
-    addToCart.innerHTML = "Add film to cart";
-    addToCart.href = `../html/checkout.html`; 
-    addToCart.classList.add('js-add-to-cart', 'cta');
+    const addToCartButton = document.createElement('button');
+    addToCartButton.innerHTML = "Add film to cart";
+    addToCartButton.href = `../html/checkout.html`; 
+    addToCartButton.classList.add('js-add-to-cart', 'cta');
+    addToCartButton.addEventListener('click', () => {
+        addToCart(film);
+    })
     // addToCart.addEventListener('click', () => {
     //     let cart = JSON.parse(localStorage.getItem("cart"));
     //     cart.push(film);
@@ -42,10 +53,7 @@ function createFilmElement(film) {
     //     console.log("added to cart");
     // });
 
-    filmDiv.appendChild(imageElement);
-    filmDiv.appendChild(titleElement);
-    filmDiv.appendChild(filmPageLink);
-    filmDiv.appendChild(addToCart);
+    filmDiv.append(imageElement, titleElement, filmPageLink, addToCartButton);
 
     return filmDiv;
 };

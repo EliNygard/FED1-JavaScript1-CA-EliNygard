@@ -1,7 +1,6 @@
 import { API_FILM_URL } from "./shared/constants.js";
 
 import { displayFilms } from "./display-films.mjs";
-// import { generateFilmPageItem } from "./filmpage.mjs";
 import { filterFunctions } from "./filter-by-genre.mjs";
 
 
@@ -22,7 +21,6 @@ async function main() {
     localStorage.setItem("filmList", JSON.stringify(filmItems)); 
 
     displayFilms(filmItems);
-    // generateFilmPageItem(filmItems);
     filterFunctions(filmItems);
 
 }
@@ -42,9 +40,6 @@ main();
 // generate items
 // update cart quantity
 // buy films button = message to user
-
-
-
 
 const removeCartItemButtons = document.getElementsByClassName("remove-btn");
 for (var i = 0; i < removeCartItemButtons.length; i++) {
@@ -126,22 +121,6 @@ function getFilms() {
 
 getFilms(filmsArray);
 
-
-// function addToCartClicked(event) {
-//     const button = event.target;
-//     const shopItem = button.parentElement;
-//     const title = shopItem.getElementsByClassName("film-title")[0].innerText;
-//     console.log(title);
-//     const imageSrc = shopItem.getElementsByClassName("film-image")[0].src;
-    // if (shopItem) {  //from chatGPT
-    //     const titleElement = shopItem.querySelector(".film-title");
-    //     const imageElement = shopItem.querySelector(".film-image");
-    // }
-    // if (titleElement && imageElement) {}
-    // const title = titleElement.innerText;
-    // const imageSrc = imageElement.src;
-    // console.log(title, imageSrc);
-// }
 
 function updateCartTotal() {
     const cartItemContainer = document.getElementsByClassName("cart-items")[0];

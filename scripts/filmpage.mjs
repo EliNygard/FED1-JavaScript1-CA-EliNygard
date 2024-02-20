@@ -1,11 +1,11 @@
 const filmItem = JSON.parse(localStorage.getItem("film"));
 
-export function generateFilmPageItem (filmItem) {
+function generateFilmPageItem (filmItem) {
 
     let main = document.querySelector("main");
 
-    const filmDivItem = document.createElement("div");
-    filmDivItem.classList = "filmpage_content";
+    const filmItemContainer = document.createElement("div");
+    filmItemContainer.classList = "filmpage_content";
 
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image')
@@ -31,15 +31,10 @@ export function generateFilmPageItem (filmItem) {
     releasedElement.textContent = filmItem.released;
 
 
-    main.appendChild(filmDivItem);
-    filmDivItem.appendChild(imageElement);
-    filmDivItem.appendChild(titleElement);
-    filmDivItem.appendChild(descriptionElement);
-    filmDivItem.appendChild(releasedElement);
-    filmDivItem.appendChild(buyFilmButton);
-    filmDivItem.appendChild(ratingElement);
+    main.appendChild(filmItemContainer);
+    filmItemContainer.append(imageElement, titleElement, descriptionElement, releasedElement, buyFilmButton, ratingElement);
 
-    return filmDivItem;
+    return filmItemContainer;
 }
 
 generateFilmPageItem(filmItem);

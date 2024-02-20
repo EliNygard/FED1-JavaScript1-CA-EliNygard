@@ -1,4 +1,4 @@
-import { API_URL } from "./shared/constants.js";
+import { API_URL } from "../shared/constants.js";
 
 let filmsData = []; // Define filmsData in the global scope
 
