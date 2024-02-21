@@ -1,3 +1,6 @@
+
+import { handleAddToCart } from "./addtocart.mjs";
+
 export function displayFilms(filmItems) {
 
     const filmsData = filmItems;
@@ -9,18 +12,11 @@ export function displayFilms(filmItems) {
     });
 };
 
-// steps for add to cart; 
-// 1. check if film is added to cart:
-//    if added, increment "quantity" by 1
-// else, add the game
-function addToCart(film) {
-    console.log("add to cart", film);
-}
-
 function createFilmElement(film) {
     
     const filmDiv = document.createElement('div');
     filmDiv.classList.add('film-item');
+    filmDiv.setAttribute('id', film.id)
 
     const imageElement = document.createElement('img');
     imageElement.classList.add("film-image")
@@ -32,29 +28,23 @@ function createFilmElement(film) {
     titleElement.classList.add('film-selection__heading', 'film-title');
 
     const filmPageLink = document.createElement('a');
-    filmPageLink.innerHTML = "View film info";
+    filmPageLink.textContent = "View film info";
     filmPageLink.href = `../html/filmpage.html`;   
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
     }); 
 
-    const addToCartButton = document.createElement('button');
-    addToCartButton.innerHTML = "Add film to cart";
-    addToCartButton.href = `../html/checkout.html`; 
-    addToCartButton.classList.add('js-add-to-cart', 'cta');
-    addToCartButton.addEventListener('click', () => {
-        addToCart(film);
-    })
-    // addToCart.addEventListener('click', () => {
-    //     let cart = JSON.parse(localStorage.getItem("cart"));
-    //     cart.push(film);
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    //     console.log("added to cart");
-    // });
+    const addToCart = document.createElement('button');
+    addToCart.innerHTML = "Add film to cart";
+    addToCart.href = `../html/checkout.html`; 
+    addToCart.classList.add('js-add-to-cart', 'cta');
+    addToCart.addEventListener('click', handleAddToCart)
 
-    filmDiv.append(imageElement, titleElement, filmPageLink, addToCartButton);
+    filmDiv.appendChild(imageElement);
+    filmDiv.appendChild(titleElement);
+    filmDiv.appendChild(filmPageLink);
+    filmDiv.appendChild(addToCart);
 
     return filmDiv;
 };
-

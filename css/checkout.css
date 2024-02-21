@@ -30,6 +30,7 @@
     margin: auto;
     max-width: 16rem;
     gap: .4rem;
+    padding-top: 4rem;
 }
 
 .form-wide {
@@ -87,4 +88,8 @@
 
 .price-discount {
     color: green;
+}
+
+.cart-tot {
+    padding-left: 3rem;
 }

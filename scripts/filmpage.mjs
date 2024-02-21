@@ -1,11 +1,13 @@
 const filmItem = JSON.parse(localStorage.getItem("film"));
 
-function generateFilmPageItem (filmItem) {
+import { handleAddToCart } from "./addtocart.mjs";
+
+export function generateFilmPageItem (filmItem) {
 
     let main = document.querySelector("main");
 
-    const filmItemContainer = document.createElement("div");
-    filmItemContainer.classList = "filmpage_content";
+    const filmDivItem = document.createElement("div");
+    filmDivItem.classList = "filmpage_content";
 
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image')
@@ -20,9 +22,15 @@ function generateFilmPageItem (filmItem) {
     descriptionElement.classList.add('synopsis');
     descriptionElement.textContent = filmItem.description;
 
-    const buyFilmButton = document.createElement("button");
-    buyFilmButton.innerHTML = "Add film to cart";
-    buyFilmButton.classList.add("js-add-to-cart", "cta");
+    // const buyFilmButton = document.createElement("button");
+    // buyFilmButton.innerHTML = "Add film to cart";
+    // buyFilmButton.classList.add("js-add-to-cart", "cta");
+
+    const addToCart = document.createElement('button');
+    addToCart.innerHTML = "Add film to cart";
+    addToCart.href = `../html/checkout.html`; 
+    addToCart.classList.add('js-add-to-cart', 'cta');
+    addToCart.addEventListener('click', handleAddToCart)
 
     const ratingElement = document.createElement("p");
     ratingElement.textContent = `Rating by other users: ${filmItem.rating} points`;
@@ -31,10 +39,15 @@ function generateFilmPageItem (filmItem) {
     releasedElement.textContent = filmItem.released;
 
 
-    main.appendChild(filmItemContainer);
-    filmItemContainer.append(imageElement, titleElement, descriptionElement, releasedElement, buyFilmButton, ratingElement);
+    main.appendChild(filmDivItem);
+    filmDivItem.appendChild(imageElement);
+    filmDivItem.appendChild(titleElement);
+    filmDivItem.appendChild(descriptionElement);
+    filmDivItem.appendChild(releasedElement);
+    filmDivItem.appendChild(addToCart);
+    filmDivItem.appendChild(ratingElement);
 
-    return filmItemContainer;
+    return filmDivItem;
 }
 
 generateFilmPageItem(filmItem);
