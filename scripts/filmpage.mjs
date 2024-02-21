@@ -22,9 +22,23 @@ export function generateFilmPageItem (filmItem) {
     descriptionElement.classList.add('synopsis');
     descriptionElement.textContent = filmItem.description;
 
-    // const buyFilmButton = document.createElement("button");
-    // buyFilmButton.innerHTML = "Add film to cart";
-    // buyFilmButton.classList.add("js-add-to-cart", "cta");
+    const priceElement = document.createElement("div");
+    priceElement.classList.add("price-element");
+
+    if (filmItem.onSale) {
+        const priceDiscount = document.createElement("p");
+        const priceBefore = document.createElement("p");
+        priceDiscount.classList.add("price-discount");
+        priceBefore.classList.add("price-before");
+        priceDiscount.textContent = `Discounted price: ${filmItem.discountedPrice}`;
+        priceBefore.textContent = `Before: ${filmItem.price}`;
+        priceElement.append(priceDiscount, priceBefore);
+    } else {
+        const price = document.createElement("p");
+        price.classList.add("cart-price");
+        price.textContent = `Price: ${filmItem.price}`;
+        priceElement.appendChild(price);
+    }
 
     const addToCart = document.createElement('button');
     addToCart.innerHTML = "Add film to cart";
@@ -44,6 +58,7 @@ export function generateFilmPageItem (filmItem) {
     filmDivItem.appendChild(titleElement);
     filmDivItem.appendChild(descriptionElement);
     filmDivItem.appendChild(releasedElement);
+    filmDivItem.appendChild(priceElement);
     filmDivItem.appendChild(addToCart);
     filmDivItem.appendChild(ratingElement);
 
