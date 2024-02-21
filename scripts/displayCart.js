@@ -1,16 +1,29 @@
-let filmsArray = JSON.parse(localStorage.getItem("cart"));
-const priceSpan = document.querySelector('.cart-total-price');
-console.log(priceSpan)
+// add quantity to a film if it is added more than once to the cart
+// remove hardcoded text "Total". Generate. 
+
+
+let cart = JSON.parse(localStorage.getItem("cart"));
+if (!cart) {
+    cart = [];
+}
+
+const totalPriceElement = document.querySelector('.cart-total-price');
 
 function getFilms() {
-    filmsArray.forEach(film => {
-        generateCartItem(film)
-    })  
+    if (cart.length === 0) {
+        const emptyCartMessage = document.createElement('p');
+        emptyCartMessage.textContent = "You have no films in your cart. Go to our great film selection and find your next film to watch.";
+        const cartItemsContainer = document.querySelector('.cart-items');
+        cartItemsContainer.appendChild(emptyCartMessage);
+    } else {
+        cart.forEach(film => {
+            generateCartItem(film)
+        });
+    }; 
 };
 
 getFilms();
 
-// create if statement for the discount price
 
 function generateCartItem (filmItem) {
     const cartItemsContainer = document.querySelector(".cart-items");
@@ -52,18 +65,18 @@ function generateCartItem (filmItem) {
     cartRow.appendChild(cartItem);
     cartItemsContainer.appendChild(cartRow);
 
-    priceSpan.textContent = updateCartTotal();
+    totalPriceElement.textContent = updateCartTotal();
 };
 
 function removeCartItem(event) {
     const removeButtonClicked = event.target;
     const toRemove = removeButtonClicked.closest('.cart-row').id
     removeButtonClicked.closest('.cart-row').remove()
-    const indexToRemove = filmsArray.findIndex(item => item.id === toRemove)
+    const indexToRemove = cart.findIndex(item => item.id === toRemove)
     if(indexToRemove !== -1){
-        filmsArray.splice(indexToRemove, 1)
-        localStorage.setItem("cart", JSON.stringify(filmsArray))
-        priceSpan.textContent = updateCartTotal();
+        cart.splice(indexToRemove, 1)
+        localStorage.setItem("cart", JSON.stringify(cart))
+        totalPriceElement.textContent = updateCartTotal();
     }
     
 }
@@ -83,7 +96,7 @@ function removeCartItem(event) {
 //     document.getElementsByClassName("cart-total-price")[0].innerText = total + ' kr';
 // }
 function updateCartTotal() {
-    const totalPrice = filmsArray.reduce((total, item) => {
+    const totalPrice = cart.reduce((total, item) => {
         if (item.discountedPrice !== undefined && item.onSale) {
             total += item.discountedPrice;
         } else {
