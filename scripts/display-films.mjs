@@ -32,7 +32,7 @@ function createFilmElement(film) {
 
     const filmPageLink = document.createElement('a');
     filmPageLink.textContent = "View film info";
-    filmPageLink.href = `/JavaScript-1-CA/html/filmpage.html`;   
+    filmPageLink.href = `../html/filmpage.html`;   
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
