@@ -13,7 +13,6 @@ async function fetchFilms(url) {
 
 async function main() {
     loader.show();
-    console.log(loader);
     const filmItems = await fetchFilms(API_FILM_URL);
     localStorage.setItem("filmList", JSON.stringify(filmItems));
     loader.hide();
