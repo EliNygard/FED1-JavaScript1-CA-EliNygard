@@ -1,4 +1,3 @@
-
 import { displayFilms } from "./display-films.mjs";
 
 export const filterFunctions = () => {

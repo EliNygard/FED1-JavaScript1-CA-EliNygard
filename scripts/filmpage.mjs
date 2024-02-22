@@ -3,12 +3,13 @@ const filmItem = JSON.parse(localStorage.getItem("film"));
 import { handleAddToCart } from "./addtocart.mjs";
 import loader from './loader.mjs';
 
-export function generateFilmPageItem (filmItem) {
+function generateFilmPageItem (filmItem) {
 
     let main = document.querySelector("main");
 
     const filmDivItem = document.createElement("div");
-    filmDivItem.classList = "filmpage_content";
+    filmDivItem.classList = "film-item";
+    filmDivItem.setAttribute('id', filmItem.id);
 
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image')
@@ -45,7 +46,7 @@ export function generateFilmPageItem (filmItem) {
     addToCart.innerHTML = "Add film to cart";
     addToCart.href = `../html/checkout.html`; 
     addToCart.classList.add('js-add-to-cart', 'cta');
-    addToCart.addEventListener('click', handleAddToCart)
+    addToCart.addEventListener('click', handleAddToCart);
 
     const ratingElement = document.createElement("p");
     ratingElement.textContent = `Rating by other users: ${filmItem.rating} points`;
@@ -73,4 +74,3 @@ function loadFilmPage(){
 }
 
 loadFilmPage();
-

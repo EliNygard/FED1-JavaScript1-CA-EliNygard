@@ -1,12 +1,13 @@
 export function handleAddToCart(event){
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const button = event.target
-    const filmId = button.closest('.film-item').id
+    const button = event.target;
+    const filmId = button.closest('.film-item').id;
     const filmToAdd = findFilmById(filmId);
     
     //check if film added is in cart, if it is increase quantity
 
     if (filmToAdd) {
+        // set the q
         cart.push(filmToAdd);
         localStorage.setItem('cart', JSON.stringify(cart));
         console.log("Added to cart:", filmToAdd);

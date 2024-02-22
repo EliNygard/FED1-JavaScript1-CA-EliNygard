@@ -19,7 +19,7 @@ function createFilmElement(film) {
     
     const filmDiv = document.createElement('div');
     filmDiv.classList.add('film-item');
-    filmDiv.setAttribute('id', film.id)
+    filmDiv.setAttribute('id', film.id);
 
     const imageElement = document.createElement('img');
     imageElement.classList.add("film-image")
@@ -47,8 +47,6 @@ function createFilmElement(film) {
     filmDiv.appendChild(titleElement);
     filmDiv.appendChild(filmPageLink);
     filmDiv.appendChild(addToCart);
-
-    console.log("link href:", filmPageLink.href);
 
     return filmDiv;
 };
