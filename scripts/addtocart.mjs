@@ -4,6 +4,7 @@ export function handleAddToCart(event){
     const filmId = button.closest('.film-item').id;
     const filmToAdd = findFilmById(filmId);
     
+    alert("great choice!");
     //check if film added is in cart, if it is increase quantity
 
     if (filmToAdd) {

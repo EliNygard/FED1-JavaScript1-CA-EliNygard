@@ -7,16 +7,16 @@ function generateFilmPageItem (filmItem) {
 
     let main = document.querySelector("main");
 
-    const filmDivItem = document.createElement("div");
-    filmDivItem.classList = "film-item";
-    filmDivItem.setAttribute('id', filmItem.id);
+    const filmContainer = document.createElement("div");
+    filmContainer.classList = "film-item";
+    filmContainer.setAttribute('id', filmItem.id);
 
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image')
     imageElement.src = filmItem.image.url;
     imageElement.alt = filmItem.image.alt;
 
-    const titleElement = document.createElement("h1");
+    const titleElement = document.createElement("h3");
     titleElement.classList.add('title');
     titleElement.textContent = filmItem.title;
 
@@ -55,16 +55,16 @@ function generateFilmPageItem (filmItem) {
     releasedElement.textContent = filmItem.released;
 
 
-    main.appendChild(filmDivItem);
-    filmDivItem.appendChild(imageElement);
-    filmDivItem.appendChild(titleElement);
-    filmDivItem.appendChild(descriptionElement);
-    filmDivItem.appendChild(releasedElement);
-    filmDivItem.appendChild(priceElement);
-    filmDivItem.appendChild(addToCart);
-    filmDivItem.appendChild(ratingElement);
+    main.appendChild(filmContainer);
+    filmContainer.appendChild(imageElement);
+    filmContainer.appendChild(titleElement);
+    filmContainer.appendChild(descriptionElement);
+    filmContainer.appendChild(releasedElement);
+    filmContainer.appendChild(priceElement);
+    filmContainer.appendChild(addToCart);
+    filmContainer.appendChild(ratingElement);
 
-    return filmDivItem;
+    return filmContainer;
 }
 
 function loadFilmPage(){

@@ -74,8 +74,8 @@ function removeCartItem(event) {
     removeButtonClicked.closest('.cart-row').remove()
     const indexToRemove = cart.findIndex(item => item.id === toRemove)
     if(indexToRemove !== -1){
-        cart.splice(indexToRemove, 1)
-        localStorage.setItem("cart", JSON.stringify(cart))
+        cart.splice(indexToRemove, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
         totalPriceElement.textContent = updateCartTotal();
     }
     

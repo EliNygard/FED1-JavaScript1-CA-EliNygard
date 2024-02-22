@@ -26,7 +26,7 @@ function createFilmElement(film) {
     imageElement.src = film.image.url;
     imageElement.alt = film.image.alt;
 
-    const titleElement = document.createElement('h2');
+    const titleElement = document.createElement('h3');
     titleElement.textContent = film.title;
     titleElement.classList.add('film-selection__heading', 'film-title');
 
@@ -36,6 +36,7 @@ function createFilmElement(film) {
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
+        console.log();
     }); 
 
     const addToCart = document.createElement('button');
