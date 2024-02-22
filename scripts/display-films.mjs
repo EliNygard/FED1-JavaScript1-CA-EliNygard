@@ -32,15 +32,14 @@ function createFilmElement(film) {
 
     const filmPageLink = document.createElement('a');
     filmPageLink.textContent = "View film info";
-    filmPageLink.href = `/../html/filmpage.html`;   
+    filmPageLink.href = `/JavaScript-1-CA/html/filmpage.html`;   
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
     }); 
 
     const addToCart = document.createElement('button');
-    addToCart.innerHTML = "Add film to cart";
-    // addToCart.href = `../html/checkout.html`; 
+    addToCart.innerHTML = "Add film to cart"; 
     addToCart.classList.add('js-add-to-cart', 'cta');
     addToCart.addEventListener('click', handleAddToCart)
 
