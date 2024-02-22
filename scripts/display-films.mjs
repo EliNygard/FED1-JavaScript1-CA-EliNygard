@@ -32,7 +32,7 @@ function createFilmElement(film) {
 
     const filmPageLink = document.createElement('a');
     filmPageLink.textContent = "View film info";
-    filmPageLink.href = "../html/filmpage.html";   
+    filmPageLink.href = "./html/filmpage.html";   
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
@@ -47,6 +47,8 @@ function createFilmElement(film) {
     filmDiv.appendChild(titleElement);
     filmDiv.appendChild(filmPageLink);
     filmDiv.appendChild(addToCart);
+
+    console.log("link href:", filmPageLink.href);
 
     return filmDiv;
 };
