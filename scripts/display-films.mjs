@@ -1,3 +1,6 @@
+// message to user when film has been added to cart 
+// add filter to the drop down menu
+
 
 import { handleAddToCart } from "./addtocart.mjs";
 

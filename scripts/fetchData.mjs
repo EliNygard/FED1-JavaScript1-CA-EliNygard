@@ -1,4 +1,5 @@
 import { API_FILM_URL } from "./shared/constants.js";
+import loader from './loader.mjs';
 
 async function fetchFilms(url) {
     try {
@@ -11,9 +12,13 @@ async function fetchFilms(url) {
 }
 
 async function main() {
+    loader.show();
+    console.log(loader);
     const filmItems = await fetchFilms(API_FILM_URL);
     localStorage.setItem("filmList", JSON.stringify(filmItems));
-    return filmItems
+    loader.hide();
+    return filmItems;
+    
 }
 
 export const allFilms = await main();

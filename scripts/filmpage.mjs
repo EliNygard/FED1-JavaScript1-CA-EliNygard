@@ -1,6 +1,7 @@
 const filmItem = JSON.parse(localStorage.getItem("film"));
 
 import { handleAddToCart } from "./addtocart.mjs";
+import loader from './loader.mjs';
 
 export function generateFilmPageItem (filmItem) {
 
@@ -65,4 +66,11 @@ export function generateFilmPageItem (filmItem) {
     return filmDivItem;
 }
 
-generateFilmPageItem(filmItem);
+function loadFilmPage(){
+    loader.show();
+    generateFilmPageItem(filmItem);
+    loader.hide();
+}
+
+loadFilmPage();
+

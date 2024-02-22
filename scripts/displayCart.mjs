@@ -1,6 +1,9 @@
 // add quantity to a film if it is added more than once to the cart
 // remove hardcoded text "Total". Generate. 
+// give user feedback when removing a film
+// click the films img => takes you to the film page
 
+import loader from './loader.mjs';
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (!cart) {
@@ -21,9 +24,6 @@ function getFilms() {
         });
     }; 
 };
-
-getFilms();
-
 
 function generateCartItem (filmItem) {
     const cartItemsContainer = document.querySelector(".cart-items");
@@ -117,3 +117,12 @@ buyNowButton.addEventListener('click', () => {
     window.location.href = "./checkoutsuccess.html";
     localStorage.clear();
 });
+
+
+function loadCartPage (){
+    loader.show();
+    getFilms();
+    loader.hide();
+}
+
+loadCartPage();
