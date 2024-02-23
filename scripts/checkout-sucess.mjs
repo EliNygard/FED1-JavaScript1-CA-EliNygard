@@ -23,10 +23,10 @@ function generateCheckoutSuccess() {
     
 }
 
-function loadCartPage (){
+function loadCheckoutSuccessPage (){
     loader.show();
     generateCheckoutSuccess();
     loader.hide();
 }
 
-loadCartPage();
+loadCheckoutSuccessPage();
