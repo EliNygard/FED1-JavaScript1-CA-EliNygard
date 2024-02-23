@@ -1,6 +1,5 @@
-// add quantity to a film if it is added more than once to the cart
-// remove hardcoded text "Total". Generate. 
-// give user feedback when removing a film
+// add quantity to a film if it is added more than once to the cart ✅
+// give user feedback when removing a film ✅
 // click the films img => takes you to the film page
 
 import loader from './loader.mjs';
@@ -64,7 +63,7 @@ function generateCartItem (filmItem) {
     removeButton.textContent = "Remove";
     removeButton.addEventListener('click', removeCartItem);
     
-    cartItem.appendChild(imageElement);
+    cartItem.appendChild(imageLinkElement);
     cartItem.appendChild(priceElement);
     cartItem.appendChild(quantityElement);
     cartItem.appendChild(removeButton);
@@ -84,8 +83,21 @@ function removeCartItem(event) {
         localStorage.setItem("cart", JSON.stringify(cart));
         totalPriceElement.textContent = updateCartTotal();
     }
-    
+
+    removeFromCartMessage(); 
+};
+
+function removeFromCartMessage() {
+    const removeMessage = document.createElement("div");
+    removeMessage.classList.add("added-message");
+    removeMessage.textContent = "The film was removed from the cart";
+    document.body.appendChild(removeMessage);
+
+    setTimeout(() => {
+        removeMessage.remove();
+    }, 1500);
 }
+
 // function updateCartTotal() {
 //     const cartItemContainer = document.getElementsByClassName("cart-items")[0];
 //     const cartRows = cartItemContainer.getElementsByClassName("cart-row");
@@ -113,9 +125,6 @@ function updateCartTotal() {
     const formattedTotalPrice = totalPrice.toFixed(2);
     return formattedTotalPrice;
 }
-
-
-
 
 // redirects user to checkout success page: 
 const buyNowButton = document.querySelector(".btn-purchase");

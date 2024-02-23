@@ -19,8 +19,6 @@ function generateCheckoutSuccess() {
     buttonBuyNewFilm.textContent = "Buy a new film";
 
     section.append(heading, checkoutMessage, buttonWatch, buttonBuyNewFilm);
-
-    
 }
 
 function loadCheckoutSuccessPage (){
