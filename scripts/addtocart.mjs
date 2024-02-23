@@ -26,15 +26,16 @@ function findFilmById(filmId) {
 
 function addToCartMessage() {
     const addedMessage = document.createElement('div');
+    addedMessage.classList.add("added-message");
     addedMessage.textContent = "`${}` The film was added to your cart!";
-    addedMessage.style.position = "fixed";
-    addedMessage.style.top = "50%";
-    addedMessage.style.left = "50%";
-    addedMessage.style.transform = "translate(-50%, -50%)";
-    addedMessage.style.backgroundColor = "lightgreen";
-    addedMessage.style.padding = "10px";
-    addedMessage.style.borderRadius = "5px";
-    addedMessage.style.zIndex = "9999";
+    // addedMessage.style.position = "fixed";
+    // addedMessage.style.top = "50%";
+    // addedMessage.style.left = "50%";
+    // addedMessage.style.transform = "translate(-50%, -50%)";
+    // addedMessage.style.backgroundColor = "lightgreen";
+    // addedMessage.style.padding = "10px";
+    // addedMessage.style.borderRadius = "5px";
+    // addedMessage.style.zIndex = "9999";
     document.body.appendChild(addedMessage);
 
     setTimeout(() => {
