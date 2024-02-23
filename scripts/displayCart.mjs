@@ -27,6 +27,7 @@ function getFilms() {
 
 function generateCartItem (filmItem) {
     const cartItemsContainer = document.querySelector(".cart-items");
+    
     const cartRow = document.createElement("div");
     cartRow.setAttribute('id', filmItem.id)
     cartRow.classList.add("cart-row");
@@ -52,7 +53,11 @@ function generateCartItem (filmItem) {
         price.classList.add("cart-price");
         price.textContent = `Price: ${filmItem.price}`;
         priceElement.appendChild(price);
-    }    
+    }
+    
+    const quantityElement = document.createElement("p");
+    quantityElement.classList.add("film-quantity");
+    quantityElement.textContent = `Quantity: ${filmItem.quantity}`;
 
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-btn", "cta");
@@ -61,6 +66,7 @@ function generateCartItem (filmItem) {
     
     cartItem.appendChild(imageElement);
     cartItem.appendChild(priceElement);
+    cartItem.appendChild(quantityElement);
     cartItem.appendChild(removeButton);
     cartRow.appendChild(cartItem);
     cartItemsContainer.appendChild(cartRow);
@@ -98,9 +104,9 @@ function removeCartItem(event) {
 function updateCartTotal() {
     const totalPrice = cart.reduce((total, item) => {
         if (item.discountedPrice !== undefined && item.onSale) {
-            total += item.discountedPrice;
+            total += (item.discountedPrice * item.quantity);
         } else {
-            total += item.price;
+            total += (item.price * item.quantity);
         }
         return total;
     }, 0);

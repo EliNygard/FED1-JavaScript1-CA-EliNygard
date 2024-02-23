@@ -10,6 +10,7 @@ function generateFilmPageItem (filmItem) {
     const filmContainer = document.createElement("div");
     filmContainer.classList = "film-item";
     filmContainer.setAttribute('id', filmItem.id);
+    filmContainer.setAttribute('quantity', filmItem.quantity);
 
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image')

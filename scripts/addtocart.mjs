@@ -6,14 +6,28 @@ export function handleAddToCart(event){
     
     //check if film added is in cart, if it is increase quantity
 
-    if (filmToAdd) {
-        // set the q
-        cart.push(filmToAdd);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        console.log("Added to cart:", filmToAdd);
+    const existingFilmIndex = cart.findIndex(item => item.id === filmId);
+
+    if (existingFilmIndex !== -1) {
+        // Film already exists in the cart, increase its quantity
+        cart[existingFilmIndex].quantity++;
     } else {
-        console.error("Film not found with ID:", filmId);
+        // Film doesn't exist in the cart, add it with quantity 1
+        filmToAdd.quantity = 1;
+        cart.push(filmToAdd);
     }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log("Cart updated:", cart);
+
+    // if (filmToAdd) {
+    //     // set the q
+    //     cart.push(filmToAdd);
+    //     localStorage.setItem('cart', JSON.stringify(cart));
+    //     console.log("Added to cart:", filmToAdd);
+    // } else {
+    //     console.error("Film not found with ID:", filmId);
+    // }
 
     addToCartMessage();
     
@@ -28,14 +42,6 @@ function addToCartMessage() {
     const addedMessage = document.createElement('div');
     addedMessage.classList.add("added-message");
     addedMessage.textContent = "`${}` The film was added to your cart!";
-    // addedMessage.style.position = "fixed";
-    // addedMessage.style.top = "50%";
-    // addedMessage.style.left = "50%";
-    // addedMessage.style.transform = "translate(-50%, -50%)";
-    // addedMessage.style.backgroundColor = "lightgreen";
-    // addedMessage.style.padding = "10px";
-    // addedMessage.style.borderRadius = "5px";
-    // addedMessage.style.zIndex = "9999";
     document.body.appendChild(addedMessage);
 
     setTimeout(() => {
