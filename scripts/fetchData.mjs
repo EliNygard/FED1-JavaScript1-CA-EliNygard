@@ -1,5 +1,5 @@
 import { API_FILM_URL } from "./shared/constants.js";
-import loader from './loader.mjs';
+import loader from './shared/loader.mjs';
 
 async function fetchFilms(url) {
     try {

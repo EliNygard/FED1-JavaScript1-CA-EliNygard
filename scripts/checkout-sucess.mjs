@@ -1,4 +1,6 @@
-import loader from './loader.mjs';
+// Buy a new film button - link to home page. Or remove before delivery
+
+import loader from './shared/loader.mjs';
 
 function generateCheckoutSuccess() {
     const section = document.querySelector(".checkout-success-message");
@@ -10,15 +12,11 @@ function generateCheckoutSuccess() {
     const checkoutMessage = document.createElement("p");
     checkoutMessage.textContent = "We have sent you a receipt to your e-mail. It contains a link to the film, and you can watch it as many times as you want.";
 
-    const buttonWatch = document.createElement("a");
-    buttonWatch.classList.add("cta");
-    buttonWatch.textContent = "Start watching"
-
     const buttonBuyNewFilm = document.createElement("a");
     buttonBuyNewFilm.classList.add("cta");
     buttonBuyNewFilm.textContent = "Buy a new film";
 
-    section.append(heading, checkoutMessage, buttonWatch, buttonBuyNewFilm);
+    section.append(heading, checkoutMessage, buttonBuyNewFilm);
 }
 
 function loadCheckoutSuccessPage (){

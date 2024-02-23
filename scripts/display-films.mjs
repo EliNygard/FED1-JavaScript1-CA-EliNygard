@@ -1,8 +1,8 @@
 // message to user when film has been added to cart 
-// add filter to the drop down menu
+// add filter to the drop down menu - or remove before delivery
 
 
-import { handleAddToCart } from "./addtocart.mjs";
+import { addToCart as addToCart } from "./addtocart.mjs";
 
 export function displayFilms(filmItems) {
 
@@ -39,15 +39,12 @@ function createFilmElement(film) {
         console.log();
     }); 
 
-    const addToCart = document.createElement('button');
-    addToCart.innerHTML = "Add film to cart"; 
-    addToCart.classList.add('js-add-to-cart', 'cta');
-    addToCart.addEventListener('click', handleAddToCart)
+    const addToCartButton = document.createElement('button');
+    addToCartButton.innerHTML = "Add film to cart"; 
+    addToCartButton.classList.add('js-add-to-cart', 'cta');
+    addToCartButton.addEventListener('click', addToCart)
 
-    filmDiv.appendChild(imageElement);
-    filmDiv.appendChild(titleElement);
-    filmDiv.appendChild(filmPageLink);
-    filmDiv.appendChild(addToCart);
+    filmDiv.append(imageElement, titleElement, filmPageLink, addToCartButton);
 
     return filmDiv;
 };

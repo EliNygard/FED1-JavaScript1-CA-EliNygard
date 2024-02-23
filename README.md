@@ -10,7 +10,7 @@ User Stories
 - As a user, I want to view a single product page with more detail. ✅
 - As a user, I want to add a product to my basket.✅
 - As a user, I want to remove a product from my basket.✅
-- As a user, I want to view a summary of my cart on the checkout page.
+- As a user, I want to view a summary of my cart on the checkout page. ✅
 - As a user, I want to view an order-confirmation screen after checking out.✅
 
 Required Pages
@@ -51,7 +51,7 @@ This list is a non-exhaustive list of important things to keep in mind before de
 
 Errors should be handled for the user, such that they are alerted when something goes wrong like an API call.
 
-A loading indicator should be shown to the user whenever they are waiting for an asynchronous action to finish. 
+A loading indicator should be shown to the user whenever they are waiting for an asynchronous action to finish. ✅ (have I put the loader on pages without async code? So it is not necessary?)
 
 There should be no hardcoded product data in your final submission.
 

@@ -1,8 +1,7 @@
-// add quantity to a film if it is added more than once to the cart ✅
-// give user feedback when removing a film ✅
-// click the films img => takes you to the film page
+// since I have quantity, it should be possible to reduce and increase quantity
+// add kr to price elements
 
-import loader from './loader.mjs';
+import loader from './shared/loader.mjs';
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (!cart) {
@@ -63,7 +62,7 @@ function generateCartItem (filmItem) {
     removeButton.textContent = "Remove";
     removeButton.addEventListener('click', removeCartItem);
     
-    cartItem.appendChild(imageLinkElement);
+    cartItem.appendChild(imageElement);
     cartItem.appendChild(priceElement);
     cartItem.appendChild(quantityElement);
     cartItem.appendChild(removeButton);
@@ -98,21 +97,6 @@ function removeFromCartMessage() {
     }, 1500);
 }
 
-// function updateCartTotal() {
-//     const cartItemContainer = document.getElementsByClassName("cart-items")[0];
-//     const cartRows = cartItemContainer.getElementsByClassName("cart-row");
-//     let total = 0;
-//     for (var i = 0; i < cartRows.length; i++) {
-//         const cartRow = cartRows[i];
-//         const priceElement = cartRow.getElementsByClassName("cart-price")[0]
-//         const quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
-//         const price = parseFloat(priceElement.innerText.replace("kr", ""));
-//         const quantity = quantityElement.value;
-//         total = total + (price * quantity);
-//     }
-//     total = Math.round(total * 100) / 100;          // to desimaler etter komma
-//     document.getElementsByClassName("cart-total-price")[0].innerText = total + ' kr';
-// }
 function updateCartTotal() {
     const totalPrice = cart.reduce((total, item) => {
         if (item.discountedPrice !== undefined && item.onSale) {
@@ -126,18 +110,16 @@ function updateCartTotal() {
     return formattedTotalPrice;
 }
 
-// redirects user to checkout success page: 
 const buyNowButton = document.querySelector(".btn-purchase");
 buyNowButton.addEventListener('click', () => {
     window.location.href = "./checkoutsuccess.html";
     localStorage.clear();
 });
 
-
 function loadCartPage (){
     loader.show();
     getFilms();
     loader.hide();
-}
+};
 
 loadCartPage();

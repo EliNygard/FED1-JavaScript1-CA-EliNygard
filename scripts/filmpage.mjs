@@ -1,7 +1,9 @@
+// add kr to price elements
+
 const filmItem = JSON.parse(localStorage.getItem("film"));
 
-import { handleAddToCart } from "./addtocart.mjs";
-import loader from './loader.mjs';
+import { addToCart } from "./addtocart.mjs";
+import loader from './shared/loader.mjs';
 
 function generateFilmPageItem (filmItem) {
 
@@ -13,7 +15,7 @@ function generateFilmPageItem (filmItem) {
     filmContainer.setAttribute('quantity', filmItem.quantity);
 
     const imageElement = document.createElement("img");
-    imageElement.classList.add('filmpage-image')
+    imageElement.classList.add('filmpage-image');
     imageElement.src = filmItem.image.url;
     imageElement.alt = filmItem.image.alt;
 
@@ -43,11 +45,11 @@ function generateFilmPageItem (filmItem) {
         priceElement.appendChild(price);
     }
 
-    const addToCart = document.createElement('button');
-    addToCart.innerHTML = "Add film to cart";
-    addToCart.href = `../html/checkout.html`; 
-    addToCart.classList.add('js-add-to-cart', 'cta');
-    addToCart.addEventListener('click', handleAddToCart);
+    const addToCartButton = document.createElement('button');
+    addToCartButton.innerHTML = "Add film to cart";
+    addToCartButton.href = `../html/checkout.html`; 
+    addToCartButton.classList.add('js-add-to-cart', 'cta');
+    addToCartButton.addEventListener('click', addToCart);
 
     const ratingElement = document.createElement("p");
     ratingElement.textContent = `Rating by other users: ${filmItem.rating} points`;
@@ -55,23 +57,17 @@ function generateFilmPageItem (filmItem) {
     const releasedElement = document.createElement("p");
     releasedElement.textContent = filmItem.released;
 
-
     main.appendChild(filmContainer);
-    filmContainer.appendChild(imageElement);
-    filmContainer.appendChild(titleElement);
-    filmContainer.appendChild(descriptionElement);
-    filmContainer.appendChild(releasedElement);
-    filmContainer.appendChild(priceElement);
-    filmContainer.appendChild(addToCart);
-    filmContainer.appendChild(ratingElement);
+    filmContainer.append(imageElement, titleElement, descriptionElement, 
+        releasedElement, priceElement, addToCartButton, ratingElement);
 
     return filmContainer;
-}
+};
 
 function loadFilmPage(){
     loader.show();
     generateFilmPageItem(filmItem);
     loader.hide();
-}
+};
 
 loadFilmPage();

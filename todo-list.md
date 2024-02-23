@@ -1,3 +1,10 @@
+JS:
+// click the films img => takes you to the film page
+
+
+
+
+
 Desktop:
 Dropdown - line number 2 with categories. Links on all categories. Klarer ikke å få den ned på ny linje.
 Horror: hover on film - darker transition 
