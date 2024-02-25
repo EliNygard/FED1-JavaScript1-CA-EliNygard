@@ -1,5 +1,3 @@
-import loader from './shared/loader.mjs';
-
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (!cart) {
     cart = [];
@@ -19,6 +17,8 @@ function getFilms() {
         });
     }; 
 };
+
+getFilms();
 
 function generateCartItem (filmItem) {
     const cartItemsContainer = document.querySelector(".cart-items");
@@ -112,11 +112,3 @@ buyNowButton.addEventListener('click', () => {
     window.location.href = "./checkoutsuccess.html";
     localStorage.clear();
 });
-
-function loadCartPage (){
-    loader.show();
-    getFilms();
-    loader.hide();
-};
-
-loadCartPage();
