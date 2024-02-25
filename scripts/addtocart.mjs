@@ -16,12 +16,12 @@ export function addToCart(event){
     localStorage.setItem('cart', JSON.stringify(cart));
 
     addToCartMessage();  
-}
+};
 
 function findFilmById(filmId) {
     const films = JSON.parse(localStorage.getItem("filmList")) || [];
     return films.find(film => film.id === filmId);
-}
+};
 
 function addToCartMessage() {
     const addedMessage = document.createElement('div');
@@ -32,4 +32,4 @@ function addToCartMessage() {
     setTimeout(() => {
         addedMessage.remove();
     }, 2000);
-}
+};

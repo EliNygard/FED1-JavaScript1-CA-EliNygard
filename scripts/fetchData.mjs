@@ -9,7 +9,7 @@ async function fetchFilms(url) {
     } catch (error) {
         console.error("Could not fetch data from api", error);
     }
-}
+};
 
 async function main() {
     loader.show();
@@ -18,6 +18,6 @@ async function main() {
     loader.hide();
     return filmItems;
     
-}
+};
 
 export const allFilms = await main();

@@ -3,7 +3,7 @@ import loader from './shared/loader.mjs';
 let cart = JSON.parse(localStorage.getItem("cart"));
 if (!cart) {
     cart = [];
-}
+};
 
 const totalPriceElement = document.querySelector('.cart-total-price');
 
@@ -92,7 +92,7 @@ function removeFromCartMessage() {
     setTimeout(() => {
         removeMessage.remove();
     }, 1500);
-}
+};
 
 function updateCartTotal() {
     const totalPrice = cart.reduce((total, item) => {
