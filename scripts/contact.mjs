@@ -1,6 +1,6 @@
 const submitButton = document.querySelector('#submit');
 
-export async function onSubmitClick (event) {
+function onSubmitClick (event) {
     event.preventDefault();
     alert("The message was sent");
 
@@ -8,6 +8,5 @@ export async function onSubmitClick (event) {
     document.querySelector("#email").value = "";
     document.querySelector("#message").value = "";
 };
-
 
 submitButton.addEventListener('click', onSubmitClick);

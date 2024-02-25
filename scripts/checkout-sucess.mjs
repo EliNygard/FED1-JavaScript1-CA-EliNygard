@@ -1,5 +1,3 @@
-// Buy a new film button - link to home page. Or remove before delivery
-
 import loader from './shared/loader.mjs';
 
 function generateCheckoutSuccess() {
