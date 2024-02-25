@@ -1,6 +1,3 @@
-// since I have quantity, it should be possible to reduce and increase quantity
-// add kr to price elements
-
 import loader from './shared/loader.mjs';
 
 let cart = JSON.parse(localStorage.getItem("cart"));
@@ -44,12 +41,12 @@ function generateCartItem (filmItem) {
     if (filmItem.onSale) {
         const priceDiscount = document.createElement("p");
         priceDiscount.classList.add("price-discount");
-        priceDiscount.textContent = `Discounted price: ${filmItem.discountedPrice}`;
+        priceDiscount.textContent = `Discounted price: ${filmItem.discountedPrice} kr`;
         priceElement.appendChild(priceDiscount);
     } else {
         const price = document.createElement("p");
         price.classList.add("cart-price");
-        price.textContent = `Price: ${filmItem.price}`;
+        price.textContent = `Price: ${filmItem.price} kr`;
         priceElement.appendChild(price);
     }
     
@@ -107,8 +104,8 @@ function updateCartTotal() {
         return total;
     }, 0);
     const formattedTotalPrice = totalPrice.toFixed(2);
-    return formattedTotalPrice;
-}
+    return `${formattedTotalPrice} kr`;
+};
 
 const buyNowButton = document.querySelector(".btn-purchase");
 buyNowButton.addEventListener('click', () => {

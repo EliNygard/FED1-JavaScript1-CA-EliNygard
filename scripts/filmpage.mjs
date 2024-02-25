@@ -1,5 +1,3 @@
-// add kr to price elements
-
 const filmItem = JSON.parse(localStorage.getItem("film"));
 
 import { addToCart } from "./addtocart.mjs";
@@ -41,7 +39,7 @@ function generateFilmPageItem (filmItem) {
     } else {
         const price = document.createElement("p");
         price.classList.add("cart-price");
-        price.textContent = `Price: ${filmItem.price}`;
+        price.textContent = `Price: ${filmItem.price} kr`;
         priceElement.appendChild(price);
     }
 
