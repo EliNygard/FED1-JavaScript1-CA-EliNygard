@@ -32,7 +32,6 @@ function createFilmElement(film) {
     filmPageLink.classList.add('cta');
     filmPageLink.addEventListener('click', () => {
         localStorage.setItem('film', JSON.stringify(film));
-        console.log();
     }); 
 
     const addToCartButton = document.createElement('button');

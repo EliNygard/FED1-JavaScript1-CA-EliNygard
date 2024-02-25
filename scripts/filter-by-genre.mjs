@@ -21,4 +21,4 @@ function filterFilmByGenre(genre, filmList) {
         let filteredFilmList = filmList.filter((film) => film.genre === genre);
         displayFilms(filteredFilmList);
     }
-}
+};
