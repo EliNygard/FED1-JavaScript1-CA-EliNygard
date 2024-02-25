@@ -1,5 +1,3 @@
-// message remove $ if can't be fixed
-
 export function addToCart(event){
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const button = event.target;
@@ -28,7 +26,7 @@ function findFilmById(filmId) {
 function addToCartMessage() {
     const addedMessage = document.createElement('div');
     addedMessage.classList.add("added-message");
-    addedMessage.textContent = "`${}` The film was added to your cart!";
+    addedMessage.textContent = "The film was added to your cart!";
     document.body.appendChild(addedMessage);
 
     setTimeout(() => {
