@@ -15,7 +15,7 @@ function getFilms() {
         cart.forEach(film => {
             generateCartItem(film)
         });
-    }; 
+    };
 };
 
 getFilms();
@@ -53,6 +53,8 @@ function generateCartItem (filmItem) {
     const quantityElement = document.createElement("p");
     quantityElement.classList.add("film-quantity");
     quantityElement.textContent = `Quantity: ${filmItem.quantity}`;
+
+    console.log(quantityElement);
 
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-btn", "cta");

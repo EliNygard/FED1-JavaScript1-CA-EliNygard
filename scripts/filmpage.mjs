@@ -11,6 +11,8 @@ function generateFilmPageItem (filmItem) {
     filmContainer.setAttribute('id', filmItem.id);
     filmContainer.setAttribute('quantity', filmItem.quantity);
 
+    console.log(filmContainer);
+
     const imageElement = document.createElement("img");
     imageElement.classList.add('filmpage-image');
     imageElement.src = filmItem.image.url;
